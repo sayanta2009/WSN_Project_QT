@@ -3,6 +3,7 @@
 
 int x_gateway_mote1, x_mote2, x_mote3, x_mote4, x_mote5, x_mote6;
 int y_gateway_mote1, y_mote2, y_mote3, y_mote4, y_mote5, y_mote6;
+int x, y;
 
 int main(int argc, char *argv[])
 {
@@ -26,8 +27,11 @@ int main(int argc, char *argv[])
     x_mote6 = 800;
     y_mote6 = 100;
 
+    x = 1920;
+    y = 1200;
+
     MainWindow w;
-    w.setFixedSize(1920, 1200);
+    w.setFixedSize(x, y);
     w.show();
 
     return a.exec();
