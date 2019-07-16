@@ -1,7 +1,9 @@
 <RCC>
     <qresource prefix="/prefix_image">
-        <file>images/mobile_mote.png</file>
         <file>images/forest_pic.jpg</file>
         <file>images/static_mote_2.png</file>
+        <file>images/tiger.png</file>
+        <file>images/lion.png</file>
+        <file>images/Project_logo_3.png</file>
     </qresource>
 </RCC>

@@ -8,7 +8,10 @@ int x, y;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
+    /*
+     * x_gateway_mote1, y_gateway_mote1: x,y co-ordinates for the static gateway mote
+     * Remaining are the x,y co-ordinates for the other 5 static motes
+     * */
     x_gateway_mote1 = 800;
     y_gateway_mote1 = 900;
 
@@ -31,6 +34,7 @@ int main(int argc, char *argv[])
     y = 1200;
 
     MainWindow w;
+    w.setWindowTitle("WildSENSE");
     w.setFixedSize(x, y);
     w.show();
 
