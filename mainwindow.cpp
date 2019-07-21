@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mote4 = QPoint(::x_mote4,::y_mote4);//1972(04)
     mote5 = QPoint(::x_mote5,::y_mote5);//2119(05)
     mote6 = QPoint(::x_mote6,::y_mote6);//2080(06)
-    staticMotes<<gatewayMote<<mote2<<mote3<<mote4<<mote5<<mote6;
+    static_mote_position<<gatewayMote<<mote2<<mote3<<mote4<<mote5<<mote6;
     static_mote_names<<"2050(01) -- Gateway"<<"2093(02)"<<"2363(03)"<<"1972(04)"<<"2119(05)"<<"2080(06)";
     mote_ids<<"ef1c"<<"ed9c"<<"2dc1"<<"f442"<<"f46c"<<"ef31";
 
@@ -196,20 +196,18 @@ void MainWindow::receive()
                     ui->lcdNumber_battery_tiger->display(battery_value);
                     ui->lcdNumber_temp_tiger->display(temp_value);
                     ui->lcdNumber_heartbeat_tiger->display(heartbeat_value);
-                    ui->lcdNumber_heartbeat_tiger->display(64);
 
                     ui->progressBar_battery_tiger->setValue((int)battery_value);
                     ui->progressBar_temp_tiger->setValue((int)temp_value);
                     ui->progressBar_heartbeat_tiger->setValue((int)heartbeat_value);
-                    ui->progressBar_heartbeat_tiger->setValue(64);
 
                     ui->progressBar_battery_tiger->setMaximum(100);
                     ui->progressBar_temp_tiger->setMaximum(40);
                     ui->progressBar_heartbeat_tiger->setMaximum(70);
 
-                    track_mote_neighbour_tiger = staticMotes.at(mote_ids.indexOf(list.at(4)));
+                    track_mote_neighbour_tiger = static_mote_position.at(mote_ids.indexOf(list.at(4)));
                     received_list_tiger = list;
-                    tiger_Timer->start(60000);
+                    tiger_Timer->start(120000);
                     mote_detected_tiger = true;
 
                 }else if(list.at(3) == "ee65"){
@@ -219,20 +217,18 @@ void MainWindow::receive()
                     ui->lcdNumber_battery_lion->display(battery_value);
                     ui->lcdNumber_temp_lion->display(temp_value);
                     ui->lcdNumber_heartbeat_lion->display(heartbeat_value);
-                    ui->lcdNumber_heartbeat_lion->display(63);
 
                     ui->progressBar_battery_lion->setValue((int)battery_value);
                     ui->progressBar_temp_lion->setValue((int)temp_value);
                     ui->progressBar_heartbeat_lion->setValue((int)heartbeat_value);
-                    ui->progressBar_heartbeat_lion->setValue(63);
 
                     ui->progressBar_battery_lion->setMaximum(100);
                     ui->progressBar_temp_lion->setMaximum(40);
                     ui->progressBar_heartbeat_lion->setMaximum(70);
 
-                    track_mote_neighbour_lion = staticMotes.at(mote_ids.indexOf(list.at(4)));
+                    track_mote_neighbour_lion = static_mote_position.at(mote_ids.indexOf(list.at(4)));
                     received_list_lion = list;
-                    lion_Timer->start(60000);
+                    lion_Timer->start(120000);
                     mote_detected_lion = true;
                 }
                 str = "";
@@ -269,7 +265,7 @@ void MainWindow::paintEvent(QPaintEvent *e)
     QPen blue_pen(Qt::blue);
     blue_pen.setWidth(6);
     painter.setPen(blue_pen);
-    foreach(QPoint point, staticMotes){
+    foreach(QPoint point, static_mote_position){
         painter.drawImage(point, static_mote_image_resized);
         mote_id = static_mote_names.at(index);
         index++;
@@ -312,15 +308,15 @@ void MainWindow::paintEvent(QPaintEvent *e)
                 if(i == 3){
                     draw_point1 = mobile_mote;
                 }else{
-                    draw_point1 = staticMotes.at(mote_ids.indexOf(received_list_tiger.at(i)));
+                    draw_point1 = static_mote_position.at(mote_ids.indexOf(received_list_tiger.at(i)));
                 }
-                draw_point2 = staticMotes.at(mote_ids.indexOf(received_list_tiger.at(i+1)));
+                draw_point2 = static_mote_position.at(mote_ids.indexOf(received_list_tiger.at(i+1)));
                 painter.drawLine(draw_point1, draw_point2);
             }
         }
     }
 
-    QPen dark_green_pen(Qt::darkGreen);
+    QPen dark_green_pen(Qt::green);
     dark_green_pen.setWidth(6);
     painter.setPen(dark_green_pen);
 
@@ -344,11 +340,11 @@ void MainWindow::paintEvent(QPaintEvent *e)
                 if(i == 3){
                     draw_point1 = mobile_mote;
                 }else{
-                    draw_point1 = staticMotes.at(mote_ids.indexOf(received_list_lion.at(i)));
+                    draw_point1 = static_mote_position.at(mote_ids.indexOf(received_list_lion.at(i)));
                 }
                 modified_mobile_point1.setX(draw_point1.x() + 20);
                 modified_mobile_point1.setY(draw_point1.y() + 20);
-                draw_point2 = staticMotes.at(mote_ids.indexOf(received_list_lion.at(i+1)));
+                draw_point2 = static_mote_position.at(mote_ids.indexOf(received_list_lion.at(i+1)));
                 modified_mobile_point2.setX(draw_point2.x() - 20);
                 modified_mobile_point2.setY(draw_point2.y() + 20);
                 painter.drawLine(modified_mobile_point1, modified_mobile_point2);

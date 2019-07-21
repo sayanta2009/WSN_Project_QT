@@ -26,7 +26,7 @@ private:
     Ui::MainWindow *ui;
     QextSerialPort port;
     QMessageBox error;
-    QVector<QPoint> staticMotes;//This list contains all the Qpoints of static motes
+    QVector<QPoint> static_mote_position;//This list contains all the Qpoints of static motes
     QStringList static_mote_names;// This list contains all the Mote numbers of the static motes
     /*
      * mote_ids -- This list contains the Mote ID's of all the static motes
