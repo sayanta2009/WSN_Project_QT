@@ -793,7 +793,7 @@
      <rect>
       <x>360</x>
       <y>420</y>
-      <width>51</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -804,7 +804,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Tiger</string>
+     <string>Tiger 1</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_lion">
@@ -837,6 +837,35 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="failure_box">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>100</y>
+      <width>121</width>
+      <height>121</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="alarm_label">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>60</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
+    <property name="text">
+     <string>Alarm Box</string>
     </property>
    </widget>
   </widget>

@@ -8,6 +8,7 @@ extern int x_gateway_mote1, x_mote2, x_mote3, x_mote4, x_mote5, x_mote6;
 extern int y_gateway_mote1, y_mote2, y_mote3, y_mote4, y_mote5, y_mote6;
 extern int x, y;
 bool mote_detected_tiger = false, mote_detected_lion = false;
+QTableWidget* table;
 
 /*
  * This method has been used to initialise the positions of all static motes and allocating them their
@@ -30,6 +31,13 @@ MainWindow::MainWindow(QWidget *parent) :
     static_mote_names<<"2050(01) -- Gateway"<<"2093(02)"<<"2363(03)"<<"1972(04)"<<"2119(05)"<<"2080(06)";
     mote_ids<<"ef1c"<<"ed9c"<<"2dc1"<<"f442"<<"f46c"<<"ef31";
 
+    routing_table_position << QPoint(gatewayMote.x(),gatewayMote.y()-225);
+    routing_table_position << QPoint(mote2.x()-25,mote2.y()+125);
+    routing_table_position << QPoint(mote3.x()-50,mote3.y()+150);
+    routing_table_position << QPoint(mote4.x()+100,mote4.y()+100);
+    routing_table_position << QPoint(mote5.x()-50,mote5.y()-200);
+    routing_table_position << QPoint(mote6.x(),mote6.y()+125);
+
     ui->setupUi(this);
     QPixmap bkgnd(":/prefix_image/images/forest_pic.jpg");
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -40,6 +48,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->logo->setPixmap(project_logo.scaled(400, 400, Qt::KeepAspectRatio));
     // Get all available COM Ports and store them in a QList.
     QList<QextPortInfo> ports = QextSerialEnumerator::getPorts();
+
+    ui->alarm_label->setText("<font color='red'>Alarm Box</font>");
 
     ui->label_temp->setText("<font color='white'>Temparature(°C)</font>");
     ui->label_heartbeat->setText("<font color='white'>Heartbeat(BPM)</font>");
@@ -152,6 +162,7 @@ void MainWindow::on_pushButton_close_clicked()
     mote_detected_tiger = false;
     mote_detected_lion = false;
     ui->textEdit_Status->clear();
+    table->hide();
 }
 
 /*
@@ -184,6 +195,7 @@ void MainWindow::receive()
                 QStringList heartbeat_list = heartbeat.split(":");
                 double heartbeat_value = heartbeat_list.at(1).toDouble();
 
+                ui->failure_box->clear();
                 QFont font(ui->textEdit_Status->font());
                 font.setBold(true);
                 ui->textEdit_Status->setFont(font);
@@ -232,7 +244,43 @@ void MainWindow::receive()
                     mote_detected_lion = true;
                 }
                 str = "";
-            }else{
+            } else if(str.contains("$")){
+                str.remove("\n", Qt::CaseSensitive);
+                str.remove("$", Qt::CaseSensitive);
+                QStringList list = str.split(":-");
+                QPoint table_position = routing_table_position.at(mote_ids.indexOf(list.at(0)));
+                QString table_data = list.at(1);
+                QStringList table_row_data = table_data.split("-");
+                int table_rows = table_row_data.size()/2;
+                ui->textEdit_Status->clear();
+                ui->textEdit_Status->insertPlainText("Routing Table Information of ");
+                ui->textEdit_Status->insertPlainText(static_mote_names.at(mote_ids.indexOf(list.at(0))));
+                ui->textEdit_Status->insertPlainText(" received!!!");
+                table = new QTableWidget(this);
+                //table->hide();
+                const QSize* table_size = new QSize(120,160);
+                const QRect* rect = new QRect(table_position, *table_size);
+                table->setColumnCount(2);
+                table->setRowCount(table_rows);
+
+                QTableWidgetItem* header1 = new QTableWidgetItem("Nbr");
+                table->setHorizontalHeaderItem(0, header1);
+                QTableWidgetItem* header2 = new QTableWidgetItem("Hops");
+                table->setHorizontalHeaderItem(1, header2);
+                table->setColumnWidth(0, 50);
+                table->setColumnWidth(1, 50);
+                table->setGeometry(*rect);
+
+                for(int i=0; i<table_rows; i++){
+                    //static_mote_names.at(mote_ids.indexOf(table_row_data.at(2*i)))
+                    QTableWidgetItem* neighbour = new QTableWidgetItem(static_mote_names.at(mote_ids.indexOf(table_row_data.at(2*i))));
+                    table->setItem(i, 0, neighbour);
+                    QTableWidgetItem* hop_count = new QTableWidgetItem(table_row_data.at(2*i+1));
+                    table->setItem(i, 1, hop_count);
+                }
+                table->show();
+                str = "";
+            } else{
                 str = "";
             }
         }
@@ -358,12 +406,12 @@ void MainWindow::paintEvent(QPaintEvent *e)
  * to any of the static motes waiting an interval of 25 secs.
  * */
 void MainWindow::tiger_out_of_range(void){
-    QFont font(ui->textEdit_Status->font());
+    QFont font(ui->failure_box->font());
     font.setBold(true);
-    ui->textEdit_Status->clear();
-    ui->textEdit_Status->setFont(font);
-    ui->textEdit_Status->setTextColor(QColor("red"));
-    ui->textEdit_Status->append("Caution!!!! Tiger ee66(2110) Lost Out of Range!!!! ");
+    ui->failure_box->clear();
+    ui->failure_box->setFont(font);
+    ui->failure_box->setTextColor(QColor("red"));
+    ui->failure_box->append("Caution!!!! Tiger ee66(2110) Lost Out of Range!!!! ");
     mote_detected_tiger = false;
 }
 
@@ -372,11 +420,11 @@ void MainWindow::tiger_out_of_range(void){
  * to any of the static motes waiting an interval of 25 secs.
  * */
 void MainWindow::lion_out_of_range(void){
-    QFont font(ui->textEdit_Status->font());
+    QFont font(ui->failure_box->font());
     font.setBold(true);
-    ui->textEdit_Status->clear();
-    ui->textEdit_Status->setFont(font);
-    ui->textEdit_Status->setTextColor(QColor("red"));
-    ui->textEdit_Status->append("Caution!!!! Tiger ee65(2066) Lost Out of Range!!!! ");
+    ui->failure_box->clear();
+    ui->failure_box->setFont(font);
+    ui->failure_box->setTextColor(QColor("red"));
+    ui->failure_box->append("Caution!!!! Tiger ee65(2066) Lost Out of Range!!!! ");
     mote_detected_lion = false;
 }

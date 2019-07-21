@@ -8,6 +8,7 @@
 #include "qextserialport.h"
 #include "qextserialenumerator.h"
 #include <QTimer>
+#include <QTableWidget>
 
 namespace Ui {
 class MainWindow;
@@ -26,7 +27,11 @@ private:
     Ui::MainWindow *ui;
     QextSerialPort port;
     QMessageBox error;
-    QVector<QPoint> static_mote_position;//This list contains all the Qpoints of static motes
+    /*
+     * static_mote_position -- This list contains all the Qpoints of static motes
+     * routing_table_position -- This list contains all the Qpoints of respective routing table of each static mote
+     * */
+    QVector<QPoint> static_mote_position, routing_table_position;
     QStringList static_mote_names;// This list contains all the Mote numbers of the static motes
     /*
      * mote_ids -- This list contains the Mote ID's of all the static motes
