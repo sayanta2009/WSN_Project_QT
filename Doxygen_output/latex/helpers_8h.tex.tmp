@@ -1,0 +1,59 @@
+\hypertarget{helpers_8h}{}\section{/nas/ei/home/ge29pal/\+W\+S\+N\+\_\+\+Lab/project\+\_\+wild\+S\+E\+N\+S\+E/helpers.h File Reference}
+\label{helpers_8h}\index{/nas/ei/home/ge29pal/\+W\+S\+N\+\_\+\+Lab/project\+\_\+wild\+S\+E\+N\+S\+E/helpers.\+h@{/nas/ei/home/ge29pal/\+W\+S\+N\+\_\+\+Lab/project\+\_\+wild\+S\+E\+N\+S\+E/helpers.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structneighbor}{neighbor}
+\item 
+struct \hyperlink{structnodes}{nodes}
+\item 
+struct \hyperlink{structroute__packet}{route\+\_\+packet}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{helpers_8h_adcc8237b340ce952fab74b623b57d006}{I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+H\+O\+P\+\_\+\+C\+O\+U\+NT}~32
+\item 
+\#define \hyperlink{helpers_8h_a2b1d39159e4114f433745f15a201c93c}{M\+A\+X\+\_\+\+N\+E\+I\+G\+H\+B\+O\+RS}~10
+\item 
+\#define \hyperlink{helpers_8h_a144c6d9759dad2afe4c5f76ee747f0c7}{T\+I\+M\+E\+\_\+\+T\+O\+\_\+\+L\+I\+VE}~50
+\item 
+\#define \hyperlink{helpers_8h_ad365e63edb27070325eb12b7726919a9}{C\+O\+S\+T\+\_\+\+S\+H\+A\+R\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL}~(5)
+\item 
+\#define \hyperlink{helpers_8h_a243a05f853fe6c8d39923e14b13753fb}{R\+A\+N\+D\+O\+M\+\_\+\+R\+A\+N\+D\+\_\+\+M\+AX}~65535U
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{helpers_8h_ad365e63edb27070325eb12b7726919a9}\label{helpers_8h_ad365e63edb27070325eb12b7726919a9}} 
+\index{helpers.\+h@{helpers.\+h}!C\+O\+S\+T\+\_\+\+S\+H\+A\+R\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL@{C\+O\+S\+T\+\_\+\+S\+H\+A\+R\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL}}
+\index{C\+O\+S\+T\+\_\+\+S\+H\+A\+R\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL@{C\+O\+S\+T\+\_\+\+S\+H\+A\+R\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL}!helpers.\+h@{helpers.\+h}}
+\subsubsection{\texorpdfstring{C\+O\+S\+T\+\_\+\+S\+H\+A\+R\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL}{COST\_SHARE\_INTERVAL}}
+{\footnotesize\ttfamily \#define C\+O\+S\+T\+\_\+\+S\+H\+A\+R\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL~(5)}
+
+\mbox{\Hypertarget{helpers_8h_adcc8237b340ce952fab74b623b57d006}\label{helpers_8h_adcc8237b340ce952fab74b623b57d006}} 
+\index{helpers.\+h@{helpers.\+h}!I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+H\+O\+P\+\_\+\+C\+O\+U\+NT@{I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+H\+O\+P\+\_\+\+C\+O\+U\+NT}}
+\index{I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+H\+O\+P\+\_\+\+C\+O\+U\+NT@{I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+H\+O\+P\+\_\+\+C\+O\+U\+NT}!helpers.\+h@{helpers.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+H\+O\+P\+\_\+\+C\+O\+U\+NT}{INFINITE\_HOP\_COUNT}}
+{\footnotesize\ttfamily \#define I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+H\+O\+P\+\_\+\+C\+O\+U\+NT~32}
+
+\mbox{\Hypertarget{helpers_8h_a2b1d39159e4114f433745f15a201c93c}\label{helpers_8h_a2b1d39159e4114f433745f15a201c93c}} 
+\index{helpers.\+h@{helpers.\+h}!M\+A\+X\+\_\+\+N\+E\+I\+G\+H\+B\+O\+RS@{M\+A\+X\+\_\+\+N\+E\+I\+G\+H\+B\+O\+RS}}
+\index{M\+A\+X\+\_\+\+N\+E\+I\+G\+H\+B\+O\+RS@{M\+A\+X\+\_\+\+N\+E\+I\+G\+H\+B\+O\+RS}!helpers.\+h@{helpers.\+h}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+N\+E\+I\+G\+H\+B\+O\+RS}{MAX\_NEIGHBORS}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+N\+E\+I\+G\+H\+B\+O\+RS~10}
+
+\mbox{\Hypertarget{helpers_8h_a243a05f853fe6c8d39923e14b13753fb}\label{helpers_8h_a243a05f853fe6c8d39923e14b13753fb}} 
+\index{helpers.\+h@{helpers.\+h}!R\+A\+N\+D\+O\+M\+\_\+\+R\+A\+N\+D\+\_\+\+M\+AX@{R\+A\+N\+D\+O\+M\+\_\+\+R\+A\+N\+D\+\_\+\+M\+AX}}
+\index{R\+A\+N\+D\+O\+M\+\_\+\+R\+A\+N\+D\+\_\+\+M\+AX@{R\+A\+N\+D\+O\+M\+\_\+\+R\+A\+N\+D\+\_\+\+M\+AX}!helpers.\+h@{helpers.\+h}}
+\subsubsection{\texorpdfstring{R\+A\+N\+D\+O\+M\+\_\+\+R\+A\+N\+D\+\_\+\+M\+AX}{RANDOM\_RAND\_MAX}}
+{\footnotesize\ttfamily \#define R\+A\+N\+D\+O\+M\+\_\+\+R\+A\+N\+D\+\_\+\+M\+AX~65535U}
+
+\mbox{\Hypertarget{helpers_8h_a144c6d9759dad2afe4c5f76ee747f0c7}\label{helpers_8h_a144c6d9759dad2afe4c5f76ee747f0c7}} 
+\index{helpers.\+h@{helpers.\+h}!T\+I\+M\+E\+\_\+\+T\+O\+\_\+\+L\+I\+VE@{T\+I\+M\+E\+\_\+\+T\+O\+\_\+\+L\+I\+VE}}
+\index{T\+I\+M\+E\+\_\+\+T\+O\+\_\+\+L\+I\+VE@{T\+I\+M\+E\+\_\+\+T\+O\+\_\+\+L\+I\+VE}!helpers.\+h@{helpers.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+\_\+\+T\+O\+\_\+\+L\+I\+VE}{TIME\_TO\_LIVE}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+\_\+\+T\+O\+\_\+\+L\+I\+VE~50}
+
